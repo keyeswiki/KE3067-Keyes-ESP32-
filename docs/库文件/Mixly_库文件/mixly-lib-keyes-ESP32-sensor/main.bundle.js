@@ -6667,7 +6667,7 @@ EnMsg.kids_beat = "beat";
 EnMsg.kids_play_tone = "play_tone";
 EnMsg.kids_notone = "no_tone";
 
-EnMsg.kids_ADkey = "5 key module";
+EnMsg.kids_ADkey = "ADkey button module";
 EnMsg.MIXLY_Keypad = '4*4 Matrix keyboard';
 EnMsg.MIXLY_Keypad_define = 'Define keyboard';
 EnMsg.MIXLY_Keypad_GETKEY = 'get key value';
@@ -6990,7 +6990,7 @@ ZhHansMsg.kids_beat = "节拍";
 ZhHansMsg.kids_play_tone = "播放乐曲";
 ZhHansMsg.kids_notone = "关闭蜂鸣器";
 
-ZhHansMsg.kids_ADkey = "5位按键模块";
+ZhHansMsg.kids_ADkey = "ADkey按键模块";
 ZhHansMsg.MIXLY_Keypad = '4*4矩阵键盘';
 ZhHansMsg.MIXLY_Keypad_define = '定义键盘';
 ZhHansMsg.MIXLY_Keypad_GETKEY = '获取按键值';
@@ -7299,7 +7299,7 @@ ZhHantMsg.kids_beat = "节拍";
 ZhHantMsg.kids_play_tone = "播放乐曲";
 ZhHantMsg.kids_notone = "关闭蜂鸣器";
 
-ZhHantMsg.kids_ADkey = "5位按键模块";
+ZhHantMsg.kids_ADkey = "ADkey按键模块";
 ZhHantMsg.MIXLY_Keypad = '4*4矩陣鍵盤';
 ZhHantMsg.MIXLY_Keypad_define = '定義鍵盤';
 ZhHantMsg.MIXLY_Keypad_GETKEY = '獲取按鍵值';

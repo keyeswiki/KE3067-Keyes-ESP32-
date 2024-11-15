@@ -650,16 +650,16 @@ PWM占空比越长，输出功率越高。既然我们了解了这种关系，�
 import time
 from machine import Pin,PWM
 
-## ESP32 PWM引脚输出的方式与传统控制器不同。
-## 它可以改变频率和占空比通过配置PWM的参数在初始化阶段。
-## 定义GPIO15的输出频率为10000Hz，分配给PWM。
+# ESP32 PWM引脚输出的方式与传统控制器不同。
+# 它可以改变频率和占空比通过配置PWM的参数在初始化阶段。
+# 定义GPIO15的输出频率为10000Hz，分配给PWM。
 
 pwm =PWM(Pin(15,Pin.OUT),10000)
 
 try:
     while True:
-## 占空比范围为0-1023，因此我们使用第一个for回路控制PWM改变占空比值，使PWM输出0% -100%;
-## 使用第二个for回路使PWM输出100%-0%。 
+# 占空比范围为0-1023，因此我们使用第一个for回路控制PWM改变占空比值，使PWM输出0% -100%;
+# 使用第二个for回路使PWM输出100%-0%。 
         for i in range(0,1023):
             pwm.duty(i)
             time.sleep_ms(1)
@@ -668,8 +668,8 @@ try:
             pwm.duty(1023-i)
             time.sleep_ms(1)  
 except:
-## 每次使用PWM时，硬件定时器将打开以配合它。
-## 因此，每次使用PWM后，都需要调用deinit()来关闭定时器。否则，下次PWM可能无法工作.
+# 每次使用PWM时，硬件定时器将打开以配合它。
+# 因此，每次使用PWM后，都需要调用deinit()来关闭定时器。否则，下次PWM可能无法工作.
     pwm.deinit()
 ```
 
@@ -814,19 +814,19 @@ RGB led由三种颜色(红、绿、蓝)组成，通过混合这三种基本颜�
 ![图片不存在](./Python/media/03361d1c4f6ee83bac60498c2f726dfa.png)
 
 ```
-## 导入Pin、PWM和random库.
+# 导入Pin、PWM和random库.
 from machine import Pin, PWM
 from random import randint
 import time
 
-## 配置GPIO15, GPIO2, GPIO0的输出方式为PWM输出，PWM频率为10000Hz.
+# 配置GPIO15, GPIO2, GPIO0的输出方式为PWM输出，PWM频率为10000Hz.
 pins = [0, 2, 15]
 
 pwm0 = PWM(Pin(pins[0]),10000)  
 pwm1 = PWM(Pin(pins[1]),10000)
 pwm2 = PWM(Pin(pins[2]),10000)
 
-##定义一个函数来设置RGBLED的颜色.
+#定义一个函数来设置RGBLED的颜色.
 def setColor(r, g, b):
     pwm0.duty(1023-r)
     pwm1.duty(1023-g)
@@ -918,9 +918,9 @@ except:
 from machine import Pin
 import time
 
-## 使用阵列定义10个连接点阵屏的GPIO端口，便于操作。.
+# 使用阵列定义10个连接点阵屏的GPIO端口，便于操作。.
 pins = [22, 21, 19, 18, 17, 16, 4, 0, 2, 15]
-## 使用两个for循环分别从左到右打开led，然后从右到左打开led
+# 使用两个for循环分别从左到右打开led，然后从右到左打开led
 def showLed():
     for pin in pins:
         print(pin)
@@ -1047,7 +1047,7 @@ def show(code):
         pins[i].value(~code & 1)
         code = code >> 1
 
-## 选择0 ~ 9之间的编码
+# 选择0 ~ 9之间的编码
 mask_digits = [0xc0, 0xf9, 0xa4, 0xb0, 0x99, 0x92, 0x82, 0xf8,0x80, 0x90]
 for code in reversed(mask_digits):
     show(code)
@@ -1144,11 +1144,11 @@ CLK：时钟引脚，可以接任意的数字引脚
 from machine import Pin
 import time
 
-## TM1650定义
+# TM1650定义
 ADDR_DIS = 0x48  #模式命令
 ADDR_KEY = 0x49  #读取键值命令
 
-## 亮度定义
+# 亮度定义
 BRIGHT_DARKEST = 0
 BRIGHT_TYPICAL = 2
 BRIGHTEST      = 7
@@ -1156,7 +1156,7 @@ BRIGHTEST      = 7
 on  = 1
 off = 0
 
-## 数字:0~9
+# 数字:0~9
 NUM = [0x3f,0x06,0x5b,0x4f,0x66,0x6d,0x7d,0x07,0x7f,0x6f] 
 ## DIG = [0x68,0x6a,0x6c,0x6e]
 DIG = [0x6e,0x6c,0x6a,0x68]
@@ -1409,16 +1409,16 @@ while True:
 ![图片不存在](./Python/media/bc649f27022478e1c9deb4e4a2062a44.png)
 
 ```
-## 导入库
+# 导入库
 import utime as time
 from machine import I2C, Pin, RTC
 from ht16k33matrix import HT16K33Matrix
 
-## 常量
+# 常量
 DELAY = 0.01
 PAUSE = 3
 
-## 启动
+# 启动
 if __name__ == '__main__':
     i2c = I2C(scl=Pin(22), sda=Pin(21))
     display = HT16K33Matrix(i2c)
@@ -1486,6 +1486,8 @@ ESP32上只有32个IO端口，我们如何点亮大量的led呢? 有时可能会
 
 **74HC595N芯片：** 简单来说就是具有8 位移位寄存器和一个存储器，以及三态输出功能。移位寄存器和存储器同步于不同的时钟，数据在移位寄存器时钟SCK的上升沿输入，在存储寄存器时钟RCK的上升沿进入的存储寄存器中去。如果两个时钟连在一起，则移位寄存器总是比存储寄存器早一个脉冲。移位寄存器有一个串行移位输入端（SI）和一个用于级联的串行输出端（SQH）,8位移位寄存器可以异步复位（低电平复位），存储寄存器有一个8位三态并行的总线输出，当输出使能（OE）被使能（低电平有效）将存储寄存器中输出至74HC595N的引脚（总线）。
 
+![Img](./media/img-20241115081724.png)
+
 **引脚说明：**
 
 | 引脚： | 引脚说明： |
@@ -1523,18 +1525,18 @@ ESP32上只有32个IO端口，我们如何点亮大量的led呢? 有时可能会
 ![图片不存在](./Python/media/7910b3fa47e7049819f9b282129a1ebc.png)
 
 ```
-## 导入time和my74HC595库.
+# 导入time和my74HC595库.
 from my74HC595 import Chip74HC595
 import time
 
-## 创建Chip74HC595对象并配置引脚
+# 创建Chip74HC595对象并配置引脚
 chip = Chip74HC595(14, 12, 13)
-## ESP32-14: 74HC595-DS(14)
-## ESP32-12: 74HC595-STCP(12)
-## ESP32-13: 74HC595-SHCP(11)
+# ESP32-14: 74HC595-DS(14)
+# ESP32-12: 74HC595-STCP(12)
+# ESP32-13: 74HC595-SHCP(11)
 
-##第一个for循环使LED从左到右分别点亮
-##而第二个for循环使它从右向左分别点亮.
+#第一个for循环使LED从左到右分别点亮
+#而第二个for循环使它从右向左分别点亮.
 while True:
     x = 0x01
     for count in range(8):
@@ -1718,10 +1720,10 @@ except:
 from machine import Pin
 import time
 
-## 初始化无源蜂鸣器
+# 初始化无源蜂鸣器
 buzzer = Pin(15,Pin.OUT)
 
-##模拟两种不同的频率
+#模拟两种不同的频率
 while True:
     #输出500HZ频率声音
     for i in range(80):
@@ -1853,7 +1855,7 @@ import time
 led = Pin(4, Pin.OUT) # 创建引脚4为LED对象，设置引脚4为输出                  
 button = Pin(15, Pin.IN, Pin.PULL_UP) #Pin15创建引脚15按钮对象，设置GP15为输入
 
-##定义一个函数并将其命名为reverseGPIO()，用于反转LED的输出电平
+#定义一个函数并将其命名为reverseGPIO()，用于反转LED的输出电平
 def reverseGPIO():
     if led.value():
         led.value(0)     #LED熄灭
@@ -1920,7 +1922,9 @@ except:
 
 ![图片不存在](./Python/media/966683cc81a185103df1862a16d7a844.png)
 
-倾斜开关也叫数字开关。里面有一个可以滚动的金属球。采用金属球滚动与底部导电板接触的原理来控制电路的通断。倾斜开关是滚珠型倾斜感应单方向性触发开关，当倾斜传感器向触发端（两根金属脚端）倾斜时，倾斜开关处于闭路状态，模拟端口的电压约为5V(二进制数为1023)。这样，LED会亮起。当倾斜开关在水平位置或向另一端倾斜时，倾斜开关处于开路状态，模拟端口的电压约为0V(0二进制)，LED将会关闭。在程序中，我们根据模拟端口的电压值，是否大于2.5V(512二进制)来判断开关是开还是关。
+倾斜开关也叫数字开关或球形开关，里面有一个金属球。它用于检测小角度的倾斜。
+
+原理很简单：当开关倾斜一定角度时，里面的球会向下滚动，接触到连接到外面引脚的两个触点，从而触发电路。否则，球将远离触点，从而断开电路。
 
 这里用倾斜开关的内部结构来说明它是如何工作的，显示如下图：
 
@@ -2097,11 +2101,11 @@ while True:
 ![图片不存在](./Python/media/da219da76424137262bc5825a78d3d3c.png)
 
 ```
-## 导入 Pin and time 库.
+# 导入 Pin and time 库.
 from machine import Pin
 import time
 
-## 定义人体红外传感器，led和有源蜂鸣器的引脚. 
+# 定义人体红外传感器，led和有源蜂鸣器的引脚. 
 sensor_pir = Pin(15, Pin.IN)
 led = Pin(0, Pin.OUT)
 buzzer = Pin(2, Pin.OUT)
@@ -2222,7 +2226,7 @@ import time
 import lcd128_32_fonts
 from lcd128_32 import lcd128_32
 
-##i2c配置
+#i2c配置
 clock_pin = 22
 data_pin = 21
 bus = 0
@@ -2484,9 +2488,9 @@ p2 = PWM(Pin(15))  # 从引脚15创建PWM对象
 p2.freq(50)  # 设置PWM频率从1Hz到40MHz
 p2.duty(256)  # 将占空比从0到1023设置为占空比/1023，(现在是25%)
  
-## 0度   P2.duty_u16(1638) #设置占空比从0到65535作为duty_u16/65535的比值
-## 90度  p2.duty_u16(4915)
-## 180度 p2.duty_u16(8192)
+# 0度   P2.duty_u16(1638) #设置占空比从0到65535作为duty_u16/65535的比值
+# 90度  p2.duty_u16(4915)
+# 180度 p2.duty_u16(8192)
  
 p2.duty_u16(1638)  # 0度
 time.sleep(1)
@@ -2594,19 +2598,19 @@ p2.deinit()              # 在引脚上关闭PWM
 from machine import Pin
 import time
  
-## 引脚初始化
+# 引脚初始化
 in1 = Pin(15, Pin.OUT)
 in2 = Pin(16, Pin.OUT)
 in3 = Pin(17, Pin.OUT)
 in4 = Pin(18, Pin.OUT)
  
-## 延时
+# 延时
 delay = 1
  
-## 电机旋转一圈所需的步数，(约360°)，会有轻微偏差.
+# 电机旋转一圈所需的步数，(约360°)，会有轻微偏差.
 ROUND_VALUE = 509
  
-## 四相八拍步进电机顺序值:A-AB-B-BC-C-CD-D-DA-A.
+# 四相八拍步进电机顺序值:A-AB-B-BC-C-CD-D-DA-A.
 STEP_VALUE = [
     [1, 0, 0, 0],
     [1, 1, 0, 0],
@@ -2618,14 +2622,14 @@ STEP_VALUE = [
     [1, 0, 0, 1],
 ]
  
-## 引脚输出电平低
+# 引脚输出电平低
 def reset():
     in1(0)
     in2(0)
     in3(0)
     in4(0)
  
-## 如果count是正整数，则顺时针旋转，如果count是负整数，则逆时针旋转
+# 如果count是正整数，则顺时针旋转，如果count是负整数，则逆时针旋转
 def step_run(count):
     direction = 1     # 顺时针转
     if count < 0:
@@ -2640,11 +2644,11 @@ def step_run(count):
             time.sleep_ms(delay)
     reset()
  
-## 如果a是正整数，则顺时针旋转，如果a是负整数，则逆时针旋转
+# 如果a是正整数，则顺时针旋转，如果a是负整数，则逆时针旋转
 def step_angle(a):
     step_run(int(ROUND_VALUE * a / 360))
  
-## 循环:顺时针转一圈，再逆时针转一圈.
+# 循环:顺时针转一圈，再逆时针转一圈.
 while True:
     step_run(509)
     step_run(-509)
@@ -2747,18 +2751,18 @@ LED：![图片不存在](./Python/media/325f351a1cc5c9af86988ddafd03fa19.png)
 from machine import Pin
 import time
 
-## 创建引脚15为继电器对象，将引脚15设置为输出 
+# 创建引脚15为继电器对象，将引脚15设置为输出 
 relay = Pin(15, Pin.OUT)
  
-## 继电器打开，继电器COM和NO连接，COM和NC断开.
+# 继电器打开，继电器COM和NO连接，COM和NC断开.
 def relay_on():
     relay(1)
  
-## 继电器闭合，继电器COM和NO断开，COM和NC接通.
+# 继电器闭合，继电器COM和NO断开，COM和NC接通.
 def relay_off():
     relay(0)
  
-## 循环，继电器开一秒，关一秒
+# 循环，继电器开一秒，关一秒
 while True:
     relay_on()
     time.sleep(1)
@@ -2870,17 +2874,17 @@ ESP32有16个引脚，可以用来测量模拟信号。GPIO引脚序列号和模
 ![图片不存在](./Python/media/ddd2dfd5e3145d229034d04098d2c15b.png)
 
 ```
-## 导入 Pin, ADC 和DAC 库.
+# 导入 Pin, ADC 和DAC 库.
 from machine import ADC,Pin,DAC
 import time
 
-## 打开并配置0-3.3V的ADC
+# 打开并配置0-3.3V的ADC
 adc=ADC(Pin(36))
 adc.atten(ADC.ATTN_11DB)
 adc.width(ADC.WIDTH_12BIT)
 
-##每0.1秒读取一次ADC值，将ADC值转换为DAC值并输出，
-##并将这些数据打印到“Shell”. 
+#每0.1秒读取一次ADC值，将ADC值转换为DAC值并输出，
+#并将这些数据打印到“Shell”. 
 try:
     while True:
         adcVal=adc.read()
@@ -3010,17 +3014,17 @@ except:
 ![图片不存在](./Python/media/7cefcca69d0fa6ef3967c26a141b8c3f.png)
 
 ```
-## 导入 Pin, ADC and DAC 库.
+# 导入 Pin, ADC and DAC 库.
 from machine import ADC,Pin,DAC
 import time
 
-## 打开并配置0-3.3V的ADC 
+# 打开并配置0-3.3V的ADC 
 adc=ADC(Pin(36))
 adc.atten(ADC.ATTN_11DB)
 adc.width(ADC.WIDTH_12BIT)
 
-## 每0.1秒读取一次ADC值，将ADC值转换为DAC值并输出，
-## 并将这些数据打印到“Shell”. 
+# 每0.1秒读取一次ADC值，将ADC值转换为DAC值并输出，
+# 并将这些数据打印到“Shell”. 
 try:
     while True:
         adcVal=adc.read()
@@ -3067,18 +3071,18 @@ except:
 from machine import ADC, Pin
 import time
 
-## 打开并配置0-3.3V的ADC 
+# 打开并配置0-3.3V的ADC 
 adc=ADC(Pin(36))
 adc.atten(ADC.ATTN_11DB)
 adc.width(ADC.WIDTH_12BIT)
-## 创建引脚15为LED对象，设置引脚15为输出
+# 创建引脚15为LED对象，设置引脚15为输出
 led = Pin(15, Pin.OUT) 
-## 创建引脚4为蜂鸣器对象，设置引脚4为输出
+# 创建引脚4为蜂鸣器对象，设置引脚4为输出
 buzzer = Pin(4, Pin.OUT)   
  
-## 如果火焰传感器检测到火焰，蜂鸣器将发出蜂鸣声
-##，当模拟值大于500时，LED闪烁
-## 否则，蜂鸣器不响，LED熄灭
+# 如果火焰传感器检测到火焰，蜂鸣器将发出蜂鸣声
+#，当模拟值大于500时，LED闪烁
+# 否则，蜂鸣器不响，LED熄灭
 
 while True:
     adcVal=adc.read()
@@ -3162,17 +3166,17 @@ while True:
 ![图片不存在](./Python/media/047bd4f52590fa964e575d2e90ccc260.png)
 
 ```
-## 导入 Pin, ADC 和 DAC 库.
+# 导入 Pin, ADC 和 DAC 库.
 from machine import ADC,Pin,DAC
 import time
 
-## 打开并配置0-3.3V的ADC
+# 打开并配置0-3.3V的ADC
 adc=ADC(Pin(36))
 adc.atten(ADC.ATTN_11DB)
 adc.width(ADC.WIDTH_12BIT)
 
-##每0.1秒读取一次ADC值，将ADC值转换为DAC值并输出，
-##并将这些数据打印到“Shell”. 
+#每0.1秒读取一次ADC值，将ADC值转换为DAC值并输出，
+#并将这些数据打印到“Shell”. 
 try:
     while True:
         adcVal=adc.read()
@@ -3295,14 +3299,14 @@ except:
 from machine import Pin, ADC
 import time
  
-## 人体红外传感器引脚
+# 人体红外传感器引脚
 human = Pin(15, Pin.IN)
  
-## 初始化光敏光传感器引脚到GP36 (ADC函数)
+# 初始化光敏光传感器引脚到GP36 (ADC函数)
 adc=ADC(Pin(36))
 adc.atten(ADC.ATTN_11DB)
 adc.width(ADC.WIDTH_10BIT)
-##创建引脚4为LED对象，设置引脚4为输出 
+#创建引脚4为LED对象，设置引脚4为输出 
 led = Pin(4, Pin.OUT)
 
 def detect_someone():
@@ -3409,17 +3413,17 @@ while True:
 ![图片不存在](./Python/media/9f642ac00db7708910947e414c690def.png)
 
 ```
-## 导入 Pin, ADC 和 DAC 库.
+# 导入 Pin, ADC 和 DAC 库.
 from machine import ADC,Pin,DAC
 import time
 
-## 打开并配置0-3.3V的ADC
+# 打开并配置0-3.3V的ADC
 adc=ADC(Pin(36))
 adc.atten(ADC.ATTN_11DB)
 adc.width(ADC.WIDTH_12BIT)
 
-## 每0.1秒读取一次ADC值，将ADC值转换为DAC值并输出，
-## 并将这些数据打印到“Shell”. 
+# 每0.1秒读取一次ADC值，将ADC值转换为DAC值并输出，
+# 并将这些数据打印到“Shell”. 
 try:
     while True:
         adcVal=adc.read()
@@ -3468,17 +3472,17 @@ except:
 from machine import ADC, Pin
 import time
  
-## 打开并配置0-3.3V的ADC 
+# 打开并配置0-3.3V的ADC 
 adc=ADC(Pin(36))
 adc.atten(ADC.ATTN_11DB)
 adc.width(ADC.WIDTH_12BIT)
  
-## 引脚初始化
+# 引脚初始化
 motor1a = Pin(15, Pin.OUT) # 创建引脚15为motor1a对象，设置引脚15为输出
 motor1b = Pin(2, Pin.OUT) # 创建引脚2为motor1b对象，设置引脚2为输出
 
-## 如果声音传感器检测到声音，电机将旋转
-## 当模拟值大于600时，否则，电机不转动.    
+# 如果声音传感器检测到声音，电机将旋转
+# 当模拟值大于600时，否则，电机不转动.    
 while True:
     adcVal=adc.read()
     print(adcVal)
@@ -3561,7 +3565,7 @@ LM35是一种常用且易于使用的温度传感器。它不需要其他硬件�
 from machine import ADC, Pin
 import time
 
-## 打开并配置0-3.3V的ADC
+# 打开并配置0-3.3V的ADC
 adc=ADC(Pin(36))
 adc.atten(ADC.ATTN_11DB)
 adc.width(ADC.WIDTH_12BIT)
@@ -3610,17 +3614,17 @@ while True:
 from machine import ADC, Pin
 import time
 
-## 打开并配置0-3.3V的ADC
+# 打开并配置0-3.3V的ADC
 adc=ADC(Pin(36))
 adc.atten(ADC.ATTN_11DB)
 adc.width(ADC.WIDTH_12BIT)
 conversion_factor = 3.3 / (4095)
 
-## 创建引脚15为红色led对象，设置引脚15为输出
+# 创建引脚15为红色led对象，设置引脚15为输出
 led_red = Pin(15, Pin.OUT)  
-## 创建引脚2为黄色led对象，设置引脚2为输出
+# 创建引脚2为黄色led对象，设置引脚2为输出
 led_yellow = Pin(2, Pin.OUT)
-## 创建引脚4为绿色led对象，将引脚4设置为输出
+# 创建引脚4为绿色led对象，将引脚4设置为输出
 led_green = Pin(4, Pin.OUT) 
 
 while True:
@@ -3715,21 +3719,21 @@ VCC接控制板的电源输出端V/VCC（3.3/5V），GND接控制板的G/GND，�
 ```
 from machine import Pin, ADC
 import time
-## 初始化摇杆模块(ADC函数)
+# 初始化摇杆模块(ADC函数)
 rocker_x=ADC(Pin(36))
 rocker_y=ADC(Pin(39))
 button_z=Pin(14,Pin.IN,Pin.PULL_UP)
 
-## 将两个ADC通道的电压采集范围设置为0-3.3V，
-##，数据采集宽度为0-4095.
+# 将两个ADC通道的电压采集范围设置为0-3.3V，
+#，数据采集宽度为0-4095.
 rocker_x.atten(ADC.ATTN_11DB)
 rocker_y.atten(ADC.ATTN_11DB)
 rocker_x.width(ADC.WIDTH_12BIT)
 rocker_y.width(ADC.WIDTH_12BIT)
  
-## 在代码中，将Z_Pin配置为上拉输入模式。
-## 在loop()中，使用Read()读取X轴和Y轴的值
-## 和使用value()来读取Z轴的值，然后显示它们.
+# 在代码中，将Z_Pin配置为上拉输入模式。
+# 在loop()中，使用Read()读取X轴和Y轴的值
+# 和使用value()来读取Z轴的值，然后显示它们.
 while True:
     print("X,Y,Z:",rocker_x.read(),",",rocker_y.read(),",",button_z.value())
     time.sleep(0.5)
@@ -3770,18 +3774,18 @@ while True:
 ```
 from machine import Pin, ADC,PWM 
 import time
-##设置RGB的接口和频率
+#设置RGB的接口和频率
 rgb_r = PWM(Pin(4))
 rgb_g = PWM(Pin(0))
 rgb_b = PWM(Pin(2))
 rgb_b.freq(1000)
 rgb_r.freq(1000)
 rgb_g.freq(1000)
-##Set rocker pin
+#Set rocker pin
 rocker_x=ADC(Pin(36))
 rocker_y=ADC(Pin(39))
-## 将两个ADC通道的电压采集范围设置为0-3.3V，
-## 数据采集宽度为0-4095.
+# 将两个ADC通道的电压采集范围设置为0-3.3V，
+# 数据采集宽度为0-4095.
 rocker_x.atten(ADC.ATTN_11DB)
 rocker_y.atten(ADC.ATTN_11DB)
 rocker_x.width(ADC.WIDTH_12BIT)
@@ -3896,15 +3900,15 @@ while True:
 ![图片不存在](./Python/media/007267f62274eca397bce1b524936ec6.png)
 
 ```
-## 导入 machine, time 和 dht 库. 
+# 导入 machine, time 和 dht 库. 
 import machine
 import time
 import dht
 
-##关联DHT11引脚(13).
+#关联DHT11引脚(13).
 DHT = dht.DHT11(machine.Pin(13))
 
-## 每秒获取一次温湿度数据，并打印出来. 
+# 每秒获取一次温湿度数据，并打印出来. 
 while True:
     DHT.measure() # 启动DHT11一次测量数据.
    # 调用DHT的内置函数来获取温度
@@ -3961,10 +3965,10 @@ from lcd128_32 import lcd128_32
 temp = 0
 humi = 0
 
-##关联DHT11引脚(13).
+#关联DHT11引脚(13).
 DHT = dht.DHT11(Pin(13))
 
-##i2c配置
+#i2c配置
 clock_pin = 22
 data_pin = 21
 bus = 0
@@ -4080,17 +4084,17 @@ HC-SR04超声波传感器有四个引脚：Vcc、Trig、Echo和GND。Vcc引脚�
 from machine import Pin
 import time
 
-## 定义超声波测距模块的控制引脚. 
+# 定义超声波测距模块的控制引脚. 
 Trig = Pin(13, Pin.OUT, 0)
 Echo = Pin(14, Pin.IN, 0)
 
 distance = 0 # 定义初始距离为0.
 soundVelocity = 340 #设置声速.
 
-## getDistance()函数用于驱动超声波模块测量距离，Trig 引脚保持在高位10us以启动超声波模块。
-## Echo.value()用于读取超声波模块Echo引脚的状态，
-## 然后使用时间模块的时间戳函数计算Echo的持续时间
-## 引脚的高电平，根据时间计算测量距离并返回值.
+# getDistance()函数用于驱动超声波模块测量距离，Trig 引脚保持在高位10us以启动超声波模块。
+# Echo.value()用于读取超声波模块Echo引脚的状态，
+# 然后使用时间模块的时间戳函数计算Echo的持续时间
+# 引脚的高电平，根据时间计算测量距离并返回值.
 def getDistance():
     Trig.value(1)
     time.sleep_us(10)
@@ -4105,7 +4109,7 @@ def getDistance():
     distance = int(soundVelocity * pingTime // 10000)
     return distance
 
-## 延迟2秒，等待超声波模块稳定下来，从超声波模块获得的数据每500毫秒打印一次.
+# 延迟2秒，等待超声波模块稳定下来，从超声波模块获得的数据每500毫秒打印一次.
 time.sleep(2)
 while True:
     time.sleep_ms(500)
@@ -4146,23 +4150,23 @@ while True:
 from machine import Pin
 import time
 
-## 定义四个led的引脚.
+# 定义四个led的引脚.
 led1 = Pin(4, Pin.OUT)
 led2 = Pin(0, Pin.OUT)
 led3 = Pin(2, Pin.OUT)
 led4 = Pin(15, Pin.OUT)
 
-## 定义超声波测距模块的控制引脚. 
+# 定义超声波测距模块的控制引脚. 
 Trig = Pin(13, Pin.OUT, 0)
 Echo = Pin(14, Pin.IN, 0)
 
 distance = 0 # 定义初始距离为0.
 soundVelocity = 340 #设置声速.
 
-## getDistance()函数用于驱动超声波模块测量距离，Trig 引脚保持在高位10us以启动超声波模块。
-## Echo.value()用于读取超声波模块Echo引脚的状态，
-## 然后使用时间模块的时间戳函数计算Echo的持续时间
-## 引脚的高电平，根据时间计算测量距离并返回值.
+# getDistance()函数用于驱动超声波模块测量距离，Trig 引脚保持在高位10us以启动超声波模块。
+# Echo.value()用于读取超声波模块Echo引脚的状态，
+# 然后使用时间模块的时间戳函数计算Echo的持续时间
+# 引脚的高电平，根据时间计算测量距离并返回值.
 def getDistance():
     Trig.value(1)
     time.sleep_us(10)
@@ -4177,7 +4181,7 @@ def getDistance():
     distance = int(soundVelocity * pingTime // 10000)
     return distance
 
-## 延迟2秒，等待超声波模块稳定下来，从超声波模块获得的数据每500毫秒打印一次. 
+# 延迟2秒，等待超声波模块稳定下来，从超声波模块获得的数据每500毫秒打印一次. 
 time.sleep(2)
 while True:
     time.sleep_ms(500)
@@ -4284,7 +4288,7 @@ from machine import Pin, ADC
 import time
 import math
 
-##设置 ADC
+#设置 ADC
 adc=ADC(Pin(36))
 adc.atten(ADC.ATTN_11DB)
 adc.width(ADC.WIDTH_12BIT)
@@ -4342,12 +4346,12 @@ import math
 import lcd128_32_fonts
 from lcd128_32 import lcd128_32
 
-##设置 ADC
+#设置 ADC
 adc=ADC(Pin(36))
 adc.atten(ADC.ATTN_11DB)
 adc.width(ADC.WIDTH_12BIT)
 
-##i2c配置
+#i2c配置
 clock_pin = 22
 data_pin = 21
 bus = 0
@@ -4475,7 +4479,7 @@ import machine
 import time
 from mfrc522_i2c import mfrc522
 
-##i2c配置
+#i2c配置
 addr = 0x28
 scl = 22
 sda = 21
@@ -4535,12 +4539,12 @@ from machine import Pin, PWM
 import time
 from mfrc522_i2c import mfrc522
 
-##定义GPIO15的输出频率为50Hz，分配给PWM
+#定义GPIO15的输出频率为50Hz，分配给PWM
 servoPin = PWM(Pin(15)) 
 servoPin.freq(50)
 servoPin.duty(256)
 
-##i2c config
+#i2c config
 addr = 0x28
 scl = 22
 sda = 21
@@ -4640,12 +4644,12 @@ while True:
 ![图片不存在](./Python/media/219d80478a9d342771b1dcc313779712.png)
 
 ```
-## 导入 keypad 库.
+# 导入 keypad 库.
 from keypad import KeyPad
 import time
-## 将键盘模块与ESP32引脚关联. 
+# 将键盘模块与ESP32引脚关联. 
 keyPad = KeyPad(22, 21, 19, 18, 17, 16, 4, 0)
-##调用函数keyPan.scan()来获取所按键的值。一旦得到，就打印出来. 
+#调用函数keyPan.scan()来获取所按键的值。一旦得到，就打印出来. 
 def key():
     keyvalue = keyPad.scan()
     if keyvalue != None:
@@ -4702,7 +4706,7 @@ servo.duty_u16(1638)
 time.sleep_ms(1000)
 activeBuzzer = Pin(2, Pin.OUT)
 
-## 定义数组并设置密码. 
+# 定义数组并设置密码. 
 passWord = "1234"
 keyIn = ""
 def key():
@@ -4713,17 +4717,17 @@ def key():
         return keyvalue
 
 while True:
- # 每次按下一个键，蜂鸣器就会短促地鸣叫一声，
- # 键的键值将存储在keydata数组中. 
+# 每次按下一个键，蜂鸣器就会短促地鸣叫一声，
+# 键的键值将存储在keydata数组中. 
     keydata = key()
     if keydata != None:
         activeBuzzer.value(1)
         time.sleep_ms(100)
         activeBuzzer.value(0)
         keyIn += keydata 
-## 当按下4个键时，判断密码是否正确。
-## 如果正确，伺服将旋转90度，1秒后再转回来。
-## 如果密码输入错误，蜂鸣器会长时间鸣叫一次，并清除keyInNum的值.        
+# 当按下4个键时，判断密码是否正确。
+# 如果正确，伺服将旋转90度，1秒后再转回来。
+# 如果密码输入错误，蜂鸣器会长时间鸣叫一次，并清除keyInNum的值.        
     if len(keyIn) == 4:
         if keyIn == passWord:
             print("passWord right!")
@@ -4807,13 +4811,13 @@ while True:
 ![图片不存在](./Python/media/277cda5548211a3512496a087969d562.png)
 
 ```
-## 导入红外解码器.
+# 导入红外解码器.
 from irrecvdata import irGetCMD
 
-## 将红外解码器与GP0关联.
+# 将红外解码器与GP0关联.
 recvPin = irGetCMD(0)
 
-## 当获得红外键值时，在“Shell”中打印出来. 
+# 当获得红外键值时，在“Shell”中打印出来. 
 try:
     while True:
         irValue = recvPin.ir_read() #调用ir_read()来读取所按键的值并将其赋值给IRValue.
@@ -4862,7 +4866,7 @@ from machine import Pin,PWM
 import time
 from irrecvdata import irGetCMD
 
-##设置RGB的接口和频率
+#设置RGB的接口和频率
 rgb_r = PWM(Pin(22))
 rgb_g = PWM(Pin(21))
 rgb_b = PWM(Pin(4))
@@ -4872,15 +4876,15 @@ rgb_b.freq(1000)
 rgb_r.duty(0)
 rgb_g.duty(0)
 rgb_b.duty(0)
-## 初始化蜂鸣器引脚 
+# 初始化蜂鸣器引脚 
 buzzer=Pin(15, Pin.OUT)
 
-##配置红外接收引脚和库
+#配置红外接收引脚和库
 recvPin = irGetCMD(0)
 
 while True:
     irValue = recvPin.ir_read() # 读取远程控制数据
- #  确定是否有满足需求的按钮 
+ # 确定是否有满足需求的按钮 
     if irValue:
         print(irValue)
         buzzer.value(1)
@@ -5078,7 +5082,7 @@ except:
 ```
 import network #导入 network 库.
 
-##请输入正确的路由器名称和密码.
+#请输入正确的路由器名称和密码.
 ssidAP         = 'ESP32_Wifi' #输入AP名称
 passwordAP     = '12345678'  #输入AP密码
 
@@ -5087,7 +5091,7 @@ gateway        = '192.168.1.1'
 subnet         = '255.255.255.0'
 dns            = '8.8.8.8'
 
-##配置ESP32为AP模式.
+#配置ESP32为AP模式.
 ap_if = network.WLAN(network.AP_IF)
 
 def AP_Setup(ssidAP,passwordAP):
