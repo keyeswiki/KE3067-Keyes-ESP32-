@@ -8,12 +8,6 @@
 
 ![Img](./media/img-20241023112325.png)
 
-<span style="background: rgb(255, 251, 0);">如果米思齐(Mixly)官网网站更新，请通过百度网盘分享的文件：mixly2.0-2024。</span>
-<br>
-<span style="background: rgb(255, 251, 0);">链接：[https://pan.baidu.com/s/1sV0DUDKg7OiQcKyIkBI1Ew?pwd=keye](https://pan.baidu.com/s/1sV0DUDKg7OiQcKyIkBI1Ew?pwd=keye) </span>
-<br>
-<span style="background: rgb(255, 251, 0);">提取码：keye </span>
-
 点击“Mixly2.0 RC4”进入百度云盘首界面，复制提取码 “<span style="color: rgb(255, 76, 65);">**ny1n**</span>” 至 “**<span style="color: rgb(0, 209, 0);">请输入提取码，不区分大小写</span>**” 的文本框，点击 “**<span style="color: rgb(0, 252, 255);">提取文件</span>**” 进入Mixly软件下载页面，左键单击“mixly2.0”。根据计算机系统选择下载对应的版本，Windows系统一般是下载“**mixly2.0-win32-x64-rc4完整版.zip**”版本，如下图所示。
 
 ![Img](./media/img-20241023112426.png)
@@ -64,6 +58,13 @@
 这里有MAC安装Mixly2.0.txt文件说明。
 
 ![Img](./media/img-20241023112956.png)
+
+<span style="background: rgb(255, 251, 0);">如果米思齐(Mixly)官网网站更新，请通过百度网盘分享的文件：mixly2.0-2024。</span>
+<br>
+<span style="background: rgb(255, 251, 0);">链接：[https://pan.baidu.com/s/1sV0DUDKg7OiQcKyIkBI1Ew?pwd=keye](https://pan.baidu.com/s/1sV0DUDKg7OiQcKyIkBI1Ew?pwd=keye) </span>
+<br>
+<span style="background: rgb(255, 251, 0);">提取码：keye </span>
+
 
 **页面介绍:**
 
@@ -1354,6 +1355,18 @@ ESP32上只有32个IO端口，我们如何点亮大量的led呢? 有时可能会
 ![Img](./media/img-20241029162852.png)
 
 从指定的数字管脚读取按键开关的数字信号(高/低电平)。
+
+![Img](./media/img-20241115103741.png)
+
+布尔型（bool）变量的值只有真 （true) 和假 （false）。 C++中如果值非零就为True,为零就是False。这里可以知道ledState初始值为0。
+
+![Img](./media/img-20241115103826.png)
+
+将ledState的当前值取反后再赋值给ledState本身。
+
+![Img](./media/img-20241115103926.png)
+
+这里延时的作用是软件方法消抖。按键机械触点断开、闭合时，由于触点的弹性作用，按键开关不会马上稳定接通或一下子断开，在闭合及断开的瞬间均伴随有一连串的抖动，为了不产生这种现象而作的措施就是按键消抖。代码中检测出键闭合后执行一个延时程序，10ms的延时，让前沿抖动消失后再一次检测键的状态，如果仍保持闭合状态电平，则确认为真正有键按下.
 
 **6.项目代码：**
 
