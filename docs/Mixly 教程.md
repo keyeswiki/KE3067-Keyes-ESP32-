@@ -109,7 +109,9 @@ ESP32主控板驱动程序安装方法请参照前面的“<span style="color: r
 **添加Mixly库文件:**
 
 <span style="color: rgb(255, 76, 65);">注意：Mixly库文件( index 库)必须添加好，否则后面涉及到相关模块的示例代码是打不开的</span>。
-
+<br>
+<span style="color: rgb(0, 209, 0); background: rgb(255, 251, 0);">特别提醒：库文件在上面 **<span style="color: rgb(255, 76, 65);">资料下载</span>** 处提供有，请下载并且安装好库文件。</span>
+<br>
 Mixly软件下载安装后，点击 <span style="color: rgb(255, 76, 65);">Arduino ESP32</span> 进入代码编辑器，先点击右上角“ 设置 ”，再点击“ 管理库 ”进入添加库文件界面。如下图所示：
 
 ![Img](./media/img-20241023114012.png)
@@ -3635,6 +3637,10 @@ APP按键发送数据，通过无线WiFi，ESP32接收相关数据，即：读�
 
 **6.项目代码：**
 
+<span style="background: rgb(255, 251, 0);"><span style="color: rgb(255, 76, 0);">**特别注意：**<span style="color: rgb(255, 76, 0);"></span>确保计算机网络，手机/平板的网络，ESP32主板，路由器，代码中输入你自己的WiFi名称和密码都必须是在同一个局域网（WiFi）下。</span></span>
+
+![Img](./media/img-202411180844190.png)
+
 你可以打开我们提供的代码，也可以自己编写代码，其如下：
 
 1. 从 “![Img](./media/img-20241023140031.png)” 拖出 “![Img](./media/img-20241023140106.png)”。
@@ -3662,6 +3668,10 @@ APP按键发送数据，通过无线WiFi，ESP32接收相关数据，即：读�
 <span style="color: rgb(255, 76, 65);">特别注意：</span>需要先将项目代码 ![Img](./media/img-20241105083150.png) 中的用户Wifi名称（SSID 名称）和用户Wifi密码（PASSWD 密码）改成你们自己的Wifi名称和Wifi密码。
 
 **7.实验现象**
+
+<span style="background: rgb(255, 251, 0);"><span style="color: rgb(255, 76, 0);">**特别注意：**<span style="color: rgb(255, 76, 0);"></span>确保计算机网络，手机/平板的网络，ESP32主板，路由器，代码中输入你自己的WiFi名称和密码都必须是在同一个局域网（WiFi）下。</span></span>
+
+![Img](./media/img-202411180844190.png)
 
 确认程序代码中的Wifi名称和Wifi密码修改正确后，编译并上传代码到ESP32主板上。
 
@@ -3737,7 +3747,13 @@ APP按键发送数据，通过无线WiFi，ESP32接收相关数据，即：读�
 
 **6.实验现象：**
 
+<span style="background: rgb(255, 251, 0);"><span style="color: rgb(255, 76, 0);">**特别注意：**<span style="color: rgb(255, 76, 0);"></span>确保计算机网络，手机/平板的网络，ESP32主板，路由器，代码中输入你自己的WiFi名称和密码都必须是在同一个局域网（WiFi）下。</span></span>
+
+![Img](./media/img-202411180844190.png)
+
 确认程序代码中的Wifi名称和Wifi密码修改正确后，编译并上传代码到ESP32主板上。
+
+![Img](./media/img-20241118084419.png)
 
 打开串口监视器，设置波特率为<span style="color: rgb(255, 76, 65);">115200</span>，这样，串口监视器打印检测到的WiFi IP地址。（**注意：** 如果打开串口监视器且设置波特率为115200之后，串口监视器窗口没有显示如下信息，可以按下ESP32的复位键![图片不存在](./Arduino/media/515a31c10d414cae43980905e7df1879.jpg)）
 

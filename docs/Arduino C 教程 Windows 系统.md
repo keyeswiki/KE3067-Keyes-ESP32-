@@ -293,6 +293,8 @@
 
 **3.添加arduino库文件**
 
+<span style="color: rgb(0, 209, 0); background: rgb(255, 251, 0);">特别提醒：库文件在上面 **<span style="color: rgb(255, 76, 65);">资料下载</span>** 处提供有，请下载并且安装好库文件。</span>
+
 我们提供的Arduino库文件的路径：**<span style="color: rgb(0, 209, 0);">..\库文件\Arduino_C_Windows系统</span>**。如下图：
 
 ![图片不存在](./Arduino/media/3246c24f086499d7a4acf7aed84e44b7.png)
@@ -303,7 +305,7 @@
 
 ![图片不存在](./Arduino/media/f82d63c799a10f799b43831596ea78cc.png)
 
-（2）找到库文件存放的位置，选中对应的库文件，点击“**打开**”添加即可。库文件只能一个一个的添加。（<span style="color: rgb(255, 76, 65);">注意：库文件需要压缩为 **.ZIP**格式，我们在文件夹中是以 **.ZIP** 格式提供有；这里以“**ESP32Servo-0.8.0.ZIP**”为演示，其他库文件的添加方法是一样的。</span>）
+（2）找到库文件存放的位置，选中对应的库文件，点击“**打开**”添加即可。库文件只能一个一个的添加。（<span style="color: rgb(255, 76, 65);">注意：库文件需要压缩为 **.ZIP**格式，我们在文件夹中是以 **.ZIP** 格式提供有；这里以“**ESP32Servo-0.8.0.ZIP**”为演示，其他库文件的添加方法是一样的。</span>）。
 
 ![图片不存在](./Arduino/media/4cfe33d7feaf2a225dbb4b8ff87af6ee.png)
 
@@ -5391,6 +5393,9 @@ b.在搜索框输入**keyes link**，点击搜索，出现下载界面，点击�
 
 **5.项目代码：**
 
+<span style="background: rgb(255, 251, 0);"><span style="color: rgb(255, 76, 0);">**特别注意：**<span style="color: rgb(255, 76, 0);"></span>确保计算机网络，手机/平板的网络，ESP32主板，路由器，代码中输入你自己的WiFi名称和密码都必须是在同一个局域网（WiFi）下。</span></span>
+
+![Img](./media/img-202411180844190.png)
 
 
 ```
@@ -5467,9 +5472,11 @@ void loop() {
 
 **6.实验现象**
 
+<span style="background: rgb(255, 251, 0);"><span style="color: rgb(255, 76, 0);">**特别注意：**<span style="color: rgb(255, 76, 0);"></span>确保计算机网络，手机/平板的网络，ESP32主板，路由器，代码中输入你自己的WiFi名称和密码都必须是在同一个局域网（WiFi）下。</span></span>
+
+![Img](./media/img-202411180844190.png)
+
 确认程序代码中的Wifi名称和Wifi密码修改正确后，编译并上传代码到ESP32主板上。
-
-
 
 打开串口监视器，设置波特率为<span style="color: rgb(255, 76, 65);">115200</span>，这样，串口监视器打印检测到的WiFi IP地址，然后打开WiFi APP。 在WIFI按钮前面的文本框中输入检测到的WIFI IP地址（<span style="color: rgb(255, 76, 65);">例如，下上面串口监视器检测到的IP地址：192.168.1.136</span>），再点击WIFI按钮，“403 Forbidden”或“网页无法打开”就会变成“192.168.1.136”。这样，就说明APP已经连接上了WIFI。
 
@@ -5801,8 +5808,11 @@ int checkdistance() {
 
 **7.实验现象：**
 
-确认程序代码中的Wifi名称和Wifi密码修改正确后，编译并上传代码到ESP32主板上。
+<span style="background: rgb(255, 251, 0);"><span style="color: rgb(255, 76, 0);">**特别注意：**<span style="color: rgb(255, 76, 0);"></span>确保计算机网络，手机/平板的网络，ESP32主板，路由器，代码中输入你自己的WiFi名称和密码都必须是在同一个局域网（WiFi）下。</span></span>
 
+![Img](./media/img-202411180844190.png)
+
+确认程序代码中的Wifi名称和Wifi密码修改正确后，编译并上传代码到ESP32主板上。
 
 
 打开串口监视器，设置波特率为<span style="color: rgb(255, 76, 65);">115200</span>，这样，串口监视器打印检测到的WiFi IP地址。（**注意：** 如果打开串口监视器且设置波特率为115200之后，串口监视器窗口没有显示如下信息，可以按下ESP32的复位键![图片不存在](./Arduino/media/515a31c10d414cae43980905e7df1879.jpg)）
