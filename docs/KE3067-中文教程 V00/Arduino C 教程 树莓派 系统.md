@@ -131,9 +131,8 @@
 
 **3.2. 树莓派操作系统(OS)**
 
-下载安装树莓派imager工具
+<span style="color: rgb(255, 76, 65);">下载安装树莓派imager工具的链接：</span> [https://www.raspberrypi.com/software/](https://www.raspberrypi.com/software/)
 
-<span style="color: rgb(255, 76, 65);">下载安装树莓派imager工具的链接：</span>https://www.raspberrypi.com/software/
 
 **Windows系统：**
 
