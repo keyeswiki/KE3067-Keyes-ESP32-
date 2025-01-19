@@ -28,7 +28,7 @@ if use_i2c:
 lcd.Clear()
 
 lcd.Cursor(0, 4)
-lcd.Display("KEYESTUDIO")
+lcd.Display("keyes")
 lcd.Cursor(1, 0)
 lcd.Display("ABCDEFGHIJKLMNOPQR")
 lcd.Cursor(2, 0)

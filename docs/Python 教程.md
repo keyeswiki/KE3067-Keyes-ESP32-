@@ -361,7 +361,7 @@ ESP32需要连接到计算机时，它是在线运行。用户可以使用Thonny
 
 ![图片不存在](./Python/media/f1ef150917d08d30d272d3e2d31ad5d7.png)
 
-4. 单击![图片不存在](./Python/media/5c05febdb56bb5ef370e897c012c1b91.png)来执行程序“Hello World!”, "Welcome Keyestudio" 并将打印在“Shell”窗口。
+4. 单击![图片不存在](./Python/media/5c05febdb56bb5ef370e897c012c1b91.png)来执行程序“Hello World!”, "Welcome keyes" 并将打印在“Shell”窗口。
 
 ![图片不存在](./Python/media/50db2dd9938bd0554a1971fb33f02f7a.png)
 
@@ -2251,7 +2251,7 @@ if use_i2c:
 lcd.Clear()
 
 lcd.Cursor(0, 4)
-lcd.Display("KEYESTUDIO")
+lcd.Display("keyes")
 lcd.Cursor(1, 0)
 lcd.Display("ABCDEFGHIJKLMNOPQR")
 lcd.Cursor(2, 0)
@@ -2270,7 +2270,7 @@ while True:
 
 ![图片不存在](./Python/media/c6205666c5db9d525f4cda9a2c2a37e4.png)
 
-单击![图片不存在](./Python/media/9616c14ed0ecaf936963389291c6c68a.png)，代码开始执行，你会看到的现象是：128X32LCD模块显示屏第一行显示“KEYESTUDIO”、第二行显示“ABCDEFGHIJKLMNOPQR”、第三行显示“123456789+-*/<>=$@”、第四行显示“%^&(){}:;'|?,.~\\[]”。按“Ctrl+C”或单击![图片不存在](./Python/media/a6fabb1fd771beb9a69907350f6832a1.png)退出程序。
+单击![图片不存在](./Python/media/9616c14ed0ecaf936963389291c6c68a.png)，代码开始执行，你会看到的现象是：128X32LCD模块显示屏第一行显示“keyes”、第二行显示“ABCDEFGHIJKLMNOPQR”、第三行显示“123456789+-*/<>=$@”、第四行显示“%^&(){}:;'|?,.~\\[]”。按“Ctrl+C”或单击![图片不存在](./Python/media/a6fabb1fd771beb9a69907350f6832a1.png)退出程序。
 
 ![图片不存在](./Python/media/51af5dee59f29259ad1167c2f2232f20.png)
 

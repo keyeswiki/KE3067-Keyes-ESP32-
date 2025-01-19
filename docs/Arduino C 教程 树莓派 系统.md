@@ -2580,7 +2580,7 @@ void setup() {
 
 void loop() {
   lcd.Cursor(0, 4); //设置显示位置
-  lcd.Display("KEYESTUDIO"); //设置显示
+  lcd.Display("keyes"); //设置显示
   lcd.Cursor(1, 0);
   lcd.Display("ABCDEFGHIJKLMNOPQR");
   lcd.Cursor(2, 0);
@@ -2596,7 +2596,7 @@ void loop() {
 
 **6.项目现象：**
 
-代码上传成功后，利用USB线上电，你会看到的现象是：128X32LCD模块显示屏第一行显示“KEYESTUDIO”、第二行显示“ABCDEFGHIJKLMNOPQR”、第三行显示“123456789+-*/<>=$@”、第四行显示“%^&(){}:;'|?,.~\\[]”。
+代码上传成功后，利用USB线上电，你会看到的现象是：128X32LCD模块显示屏第一行显示“keyes”、第二行显示“ABCDEFGHIJKLMNOPQR”、第三行显示“123456789+-*/<>=$@”、第四行显示“%^&(){}:;'|?,.~\\[]”。
 
 ![图片不存在](./Arduino/media/eeada568b7ef98fefa27e9f22435befd.png)
 

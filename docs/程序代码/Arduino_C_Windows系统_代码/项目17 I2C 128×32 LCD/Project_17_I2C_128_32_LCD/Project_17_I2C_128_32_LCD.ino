@@ -15,7 +15,7 @@ void setup() {
 
 void loop() {
   lcd.Cursor(0, 4); //设置显示位置
-  lcd.Display("KEYESTUDIO"); //设置显示
+  lcd.Display("keyes"); //设置显示
   lcd.Cursor(1, 0);
   lcd.Display("ABCDEFGHIJKLMNOPQR");
   lcd.Cursor(2, 0);
