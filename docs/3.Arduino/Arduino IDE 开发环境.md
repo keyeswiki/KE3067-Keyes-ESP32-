@@ -96,7 +96,7 @@ Arduino 软件有很多版本，有Windows，Mac，Linux系统的（如下图）
 
 ![Img](./media/dd6d3ea8b8ab77977ff2b2af74dbcdab.png)
 
-(4) 将这个地址：`https://espressif.github.io/arduino-esp32/package_esp32_index.json` 复制粘贴到里面去，再点击 “**确定**” 保存这个地址，如下图：
+(4) 将这个地址：`https://jihulab.com/esp-mirror/espressif/arduino-esp32/-/raw/gh-pages/package_esp32_index_cn.json` 复制粘贴到里面去，再点击 “**确定**” 保存这个地址，如下图：
 
 ![Img](./media/0f4697f40d0e4c73cdaa36a15034e63b.png)
 
